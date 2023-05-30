@@ -618,34 +618,19 @@ export function Chat() {
       : -1;
 
   // preview messages
-  const messages = context
-    .concat(session.messages as RenderMessage[])
-    .concat(
-      isLoading
-        ? [
-            {
-              ...createMessage({
-                role: "assistant",
-                content: "……",
-              }),
-              preview: true,
-            },
-          ]
-        : [],
-    )
-    .concat(
-      userInput.length > 0 && config.sendPreviewBubble
-        ? [
-            {
-              ...createMessage({
-                role: "user",
-                content: userInput,
-              }),
-              preview: true,
-            },
-          ]
-        : [],
-    );
+  const messages = context.concat(session.messages as RenderMessage[]).concat(
+    isLoading
+      ? [
+          {
+            ...createMessage({
+              role: "assistant",
+              content: "……",
+            }),
+            preview: true,
+          },
+        ]
+      : [],
+  );
 
   const [showPromptModal, setShowPromptModal] = useState(false);
 

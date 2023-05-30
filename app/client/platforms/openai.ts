@@ -10,7 +10,8 @@ import {
 import { prettyObject } from "@/app/utils/format";
 
 export class ChatGPTApi implements LLMApi {
-  public ChatPath = "v1/chat/completions";
+  public ChatPath =
+    "openai/deployments/gpt35/chat/completions?api-version=2023-05-15";
   public UsagePath = "dashboard/billing/usage";
   public SubsPath = "dashboard/billing/subscription";
 

@@ -46,6 +46,7 @@ export async function requestOpenai(req: NextRequest) {
   };
 
   try {
+    console.log("[Fetch] ", fetchUrl, fetchOptions);
     const res = await fetch(fetchUrl, fetchOptions);
 
     if (res.status === 401) {
