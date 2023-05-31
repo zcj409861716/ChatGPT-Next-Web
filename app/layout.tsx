@@ -5,7 +5,7 @@ import "./styles/highlight.scss";
 import { getBuildConfig } from "./config/build";
 
 const buildConfig = getBuildConfig();
-
+// test
 export const metadata = {
   title: "简单AI",
   description: "用AI原来挺简单",
