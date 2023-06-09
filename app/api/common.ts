@@ -74,18 +74,18 @@ export async function requestOpenai(req: NextRequest) {
     console.log("[Fetch] ", fetchUrl, fetchOptions);
     const res = await fetch(fetchUrl, fetchOptions);
 
-    if (res.status === 401) {
-      // to prevent browser prompt for credentials
-      const newHeaders = new Headers(res.headers);
-      newHeaders.delete("www-authenticate");
-      return new Response(res.body, {
-        status: res.status,
-        statusText: res.statusText,
-        headers: newHeaders,
-      });
-    }
+    // to prevent browser prompt for credentials
+    const newHeaders = new Headers(res.headers);
+    newHeaders.delete("www-authenticate");
 
-    return res;
+    // to disbale ngnix buffering
+    newHeaders.set("X-Accel-Buffering", "no");
+
+    return new Response(res.body, {
+      status: res.status,
+      statusText: res.statusText,
+      headers: newHeaders,
+    });
   } finally {
     clearTimeout(timeoutId);
   }
